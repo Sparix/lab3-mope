@@ -1,7 +1,7 @@
 import random
 import numpy
 import tkinter
-
+import time
 import tkinter.messagebox
 
 root = tkinter.Tk()
@@ -109,6 +109,16 @@ def normalized_multiplier(x, y_mean):
 def next_m(arr):
     for i in range(4):
         arr[i].append(random.randint(int(y_min), int(y_max)))
+
+def check(y, y_avarg, n, m):
+    start_time = time.monotonic()
+    S_kv = normalized_multiplier(y, y_avarg, n, m)
+    Gp = max(S_kv) / sum(S_kv)
+    print('\nЧас выконання')
+    end_time = time.monotonic()
+    time_C = (end_time - start_time) * 1000
+    print(f"Час пошуку коеф: {time_C:.3f} ms")
+    return Gp
 
 
 while True:
